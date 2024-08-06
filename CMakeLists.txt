@@ -9,8 +9,6 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE INTERNAL "" FORCE)
-
 # additional flags set for canvas-sync development
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1) # to build compile_commands.json
 # note that CMAKE_PREFIX_PATH must contain a Qt directory. Meaning that
@@ -22,8 +20,6 @@ endif()
 
 add_subdirectory(lib)
 add_subdirectory(ui)
-
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network)
 
 set(PROJECT_SOURCES
   main.cc
@@ -44,10 +40,13 @@ endif()
 
 qt_add_executable(cs2 MANUAL_FINALIZATION ${PROJECT_SOURCES})
 
+find_package(Qt6 REQUIRED COMPONENTS Core Network OpenGL Widgets)
+
 target_link_libraries(cs2 PRIVATE
   Qt6::Core
-  Qt6::Widgets
   Qt6::Network
+  Qt6::OpenGL
+  Qt6::Widgets
   cs2lib
   csui
 )
