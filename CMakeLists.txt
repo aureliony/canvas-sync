@@ -9,6 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+set(CMAKE_OSX_ARCHITECTURES "x86_64" CACHE INTERNAL "" FORCE)
+
 # additional flags set for canvas-sync development
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1) # to build compile_commands.json
 # note that CMAKE_PREFIX_PATH must contain a Qt directory. Meaning that
