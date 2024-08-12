@@ -21,8 +21,6 @@ endif()
 add_subdirectory(lib)
 add_subdirectory(ui)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Widgets Network)
-
 set(PROJECT_SOURCES
   main.cc
   app.cc
@@ -42,10 +40,13 @@ endif()
 
 qt_add_executable(cs2 MANUAL_FINALIZATION ${PROJECT_SOURCES})
 
+find_package(Qt6 REQUIRED COMPONENTS Core Network OpenGL Widgets)
+
 target_link_libraries(cs2 PRIVATE
   Qt6::Core
-  Qt6::Widgets
   Qt6::Network
+  Qt6::OpenGL
+  Qt6::Widgets
   cs2lib
   csui
 )
